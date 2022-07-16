@@ -1,0 +1,96 @@
+@keyframes flip {
+    0%{height: 0;}
+    50%{width: 0;}
+    100%{transform: rotate(360deg);}
+}
+@keyframes winner_image {
+    0%{height: 100%; width: 100%;margin-bottom:20%;}
+    100%{transform: rotate(360deg);}
+}
+html{
+overflow-x: hidden;
+}
+body{
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(215, 212, 212);
+    align-items: center;
+
+}
+main#game_board{
+    height: 100%;
+    width: 100%;
+    margin: 10% 0 0 0;
+    align-items: center;
+    font-family: sans-serif;
+    display: flex;
+    flex-direction: column;
+
+}
+div#row0, div#row1,div#row2,div#row3 {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+.non_click_image{
+    height:100px;
+    width:100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgb(171, 190, 49);
+}
+.clickable_image{
+    height:100px;
+    width:100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    pointer-events:all;
+    background-size: cover;
+    background-repeat: no-repeat;
+    color: rgb(171, 190, 49);
+    animation: flip 1s forwards;
+    
+}
+.animate_curr{
+    animation: 3s flip 1s forwards;
+}
+.clickable_image:hover{
+  border: 2px solid red;
+}
+button{
+    margin: 2% 0 0 0;
+}
+.disable_clicks{
+     pointer-events: none;
+     opacity: 0.8;
+}
+.winner{
+    height: 100vh;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: sans-serif;
+    text-decoration: underline;
+
+}
+img{
+    height: 40%;
+    width: 40%;
+    animation: winner_image 3s forwards;
+    border-radius: 10px;
+    border: 2px solid black;
+}
