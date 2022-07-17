@@ -1,7 +1,7 @@
 @keyframes flip {
     0%{height: 0;}
-    50%{width: 0;}
-    100%{transform: rotate(360deg);}
+    50%{width: 0;transform: rotate(360deg);}
+    100%{}
 }
 @keyframes winner_image {
     0%{height: 100%; width: 100%;margin-bottom:20%;}
@@ -9,6 +9,7 @@
 }
 html{
 overflow-x: hidden;
+font-family: sans-serif;
 }
 body{
     height: 100%;
@@ -22,7 +23,7 @@ body{
 main#game_board{
     height: 100%;
     width: 100%;
-    margin: 10% 0 0 0;
+    margin: 5% 0 0 0;
     align-items: center;
     font-family: sans-serif;
     display: flex;
@@ -58,14 +59,13 @@ div#row0, div#row1,div#row2,div#row3 {
     background-size: cover;
     background-repeat: no-repeat;
     color: rgb(171, 190, 49);
-    animation: flip 1s forwards;
+    animation: flip 0.2s forwards;
     
 }
-.animate_curr{
-    animation: 3s flip 1s forwards;
-}
+
 .clickable_image:hover{
   border: 2px solid red;
+  cursor: pointer;
 }
 button{
     margin: 2% 0 0 0;
@@ -85,7 +85,6 @@ button{
     justify-content: center;
     font-family: sans-serif;
     text-decoration: underline;
-
 }
 img{
     height: 40%;

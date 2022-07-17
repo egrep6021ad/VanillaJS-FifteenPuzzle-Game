@@ -3,15 +3,20 @@
 
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A JS game.">
     <title>Home</title>
     <link rel="stylesheet" type="text/css" href="index.css">
-    <meta name="description" content="A JS game.">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="game.js"></script>
 </head>
 
 <body id="body">
+    <span id="game_clock">
+        <h4>Total Gametime: 0 seconds</h4>
+    </span>
+    <span id="game_clicks">
+        <h4>Total Moves: 0</h4>
+    </span>
     <main id="game_board">
         <div id="row0">
 
@@ -28,6 +33,9 @@
     </main>
     <button id="shuffle_button" onClick="shuffle()">Shuffle</button>
     <button id="cheat_button" onClick="cheat()">Reset</button>
+    <audio id="song" autoplay>
+        <source src="./song.m4a" type="audio/ogg">
+    </audio><br>
 </body>
 
 </html>

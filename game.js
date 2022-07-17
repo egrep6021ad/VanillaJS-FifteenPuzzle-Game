@@ -1,5 +1,6 @@
 // Initialize the original table:
 window.onload = () => {
+
 var count = 0
   for(i = 0; i < 4; i ++){
     for(j = 0; j < 4 ; j++){
@@ -11,7 +12,8 @@ var count = 0
         elem.innerHTML = "<h1>"+(count++)+"</h1>"
         document.getElementById("row"+i).appendChild(elem)
     }
-  } 
+    
+  }   
   // Set borders on clickable buttons to "red":
   check()
 }
@@ -19,7 +21,6 @@ var count = 0
 var has_moved = false
 // Function to switch tiles:
 const handle_click = (row, col) => {
- 
     // Put the grid coord back together:
     let id = row+""+col
     let k = document.getElementById(id)
@@ -40,12 +41,15 @@ const handle_click = (row, col) => {
             check()
             diable_clicks = document.getElementsByTagName("body")[0]
             diable_clicks.setAttribute("class", "")
-        }, 1000);
+        }, 200);
     } 
 }
 
+var click_count = 0
 // Helper function to swap the tiles:
 const swap_photos = (id) => {
+    click_count++
+    document.getElementById("game_clicks").innerHTML = "<h4>Total Moves: "+click_count+"</h4>"
     // Save elem's attibutes
     const elem = document.getElementById(id)
     const temp_id = elem.id
@@ -64,11 +68,12 @@ const swap_photos = (id) => {
     other.id = temp_id
     other.setAttribute("onClick", temp_clicker)
     other.innerHTML = temp_inner_text
-
     return 
 }
 
 // Function to shuffle the tiles:
+var game_time = 0
+var actual_game_clock = null
 const shuffle = () => {
     var arr = []
     for( i = 0; i < 4; i++){
@@ -98,6 +103,16 @@ const shuffle = () => {
         arr[j].setAttribute("onClick", curr_clicker)
         arr[j].innerHTML = curr_inner_text
     }
+
+
+    var audio = document.getElementById("song")
+    audio.loop= true
+    audio.play()
+  
+    actual_game_clock = setInterval(() => {
+        game_time++
+        document.getElementById("game_clock").innerHTML = "<h4>Total Gametime: "+game_time+" seconds</h4>"
+    }, 1000);
     // Set borders on clickable buttons to "red":
     check()
 }
@@ -194,9 +209,19 @@ const check_win = () => {
             if(curr.id != i+''+j) return 
         }
     }
-    //Get rid of gameboard and replace with congrats message:
-    document.getElementById("body").innerHTML = "<div class='winner'><h1>You Win!!</h1><br><img src='./images/game_board.jpg'><div>"
-}
+    //Get rid of gameboard and replace with congrats message & best time/move ratio:
+    //localStorage.removeItem("high_score")
+    if(localStorage.getItem("high_score")==null)
+        localStorage.setItem("high_score",game_time / click_count)
+    else{
+        let previous_high_score = localStorage.getItem("high_score")
+        if(game_time / click_count<previous_high_score)
+            localStorage.setItem("high_score",game_time / click_count)
+    }
+    clearInterval(actual_game_clock)
+    document.getElementById("body").innerHTML = "<div class='winner'><h1>You Win!!</h1><br><h4>You made "+click_count+" moves in "+game_time+" seconds! (Average: "+(game_time/click_count)+" seconds per move)</h4><br><img src='./images/game_board.jpg'><br><h4>Best Average: "+localStorage.getItem("high_score")+" second(s) per move<div>"
+    console.log(localStorage.getItem("high_score"))
+}   
 const cheat = () => {
     count = 0
     for( i = 0; i < 4; i++){
@@ -207,9 +232,9 @@ const cheat = () => {
             curr.setAttribute("id", i+''+j);
             curr.innerHTML = "<h1>"+(count++)+"</h1>"
             curr.setAttribute("onClick", 'handle_click('+i+','+j+')');
-            curr.setAttribute("class","non_click_image")
-            
+            curr.setAttribute("class","non_click_image")  
         }
     }
+
     check()
 }
