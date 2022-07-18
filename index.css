@@ -25,10 +25,8 @@ main#game_board{
     width: 100%;
     margin: 5% 0 0 0;
     align-items: center;
-    font-family: sans-serif;
     display: flex;
     flex-direction: column;
-
 }
 div#row0, div#row1,div#row2,div#row3 {
     display: flex;
@@ -62,7 +60,6 @@ div#row0, div#row1,div#row2,div#row3 {
     animation: flip 0.2s forwards;
     
 }
-
 .clickable_image:hover{
   border: 2px solid red;
   cursor: pointer;
@@ -92,4 +89,7 @@ img{
     animation: winner_image 3s forwards;
     border-radius: 10px;
     border: 2px solid black;
+}
+h6{
+    margin: 2% 0 0 0;
 }

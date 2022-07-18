@@ -34,10 +34,6 @@
   - https://docs.google.com/presentation/d/1GsaBDeiai3N08x9iM8HjnDBffVwIXU86SdkM7hMzLP8/edit?usp=sharing (July 17)
 
 
-
-
-### Partner's Agenda:
-- Add name to first slide & edit "Scrum thoughts" slide with your details
 - Run / Put W3 validation label and link to esLint config file on page
-- Create 2 of the 6 extra features needed in the game
+
 - Create YouTube presentation for the project (using the powerpoint)

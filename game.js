@@ -1,10 +1,22 @@
+// Script's global vars:
+let gameStarted = false;
+let clickCount = 0;
+let gameTime = 0;
+let actualGameClock = null;
+
+// Randomize initial background with 1 of 4 options:
+const availableBackground = ['gorilla', 'dinosaur', 'horse', 'alligator'];
+const background = Math.floor(Math.random() * 4);
+let imageSelection = availableBackground[background];
+
 // Initialize the original table:
 window.onload = () => {
   let count = 0;
   for (i = 0; i < 4; i++) {
     for (j = 0; j < 4; j++) {
       const elem = document.createElement('div');
-      elem.style.backgroundImage = 'url("./images/' + i + '' + j + '.jpg")';
+      elem.style.backgroundImage = 'url("./'+
+      imageSelection+'/' + i + '' + j + '.jpg")';
       elem.setAttribute('class', 'non_click_image');
       elem.setAttribute('onClick', 'handleClick(' + i + ',' + j + ')');
       elem.setAttribute('id', i + '' + j);
@@ -16,7 +28,20 @@ window.onload = () => {
   check();
 };
 
-let hasMoved = false;
+// Function to change background image during gameplay:
+const setBackground = (arg) => {
+  imageSelection = arg;
+  const arr = document.getElementsByTagName('div');
+  for ( i = 0; i < arr.length; i++) {
+    const tempId = arr[i].getAttribute('id');
+    if (tempId.charAt(0)!= 'r') {
+      arr[i].style.backgroundImage = 'url("./'+
+      imageSelection+'/' +tempId+ '.jpg")';
+    };
+  }
+};
+
+
 // Function to switch tiles:
 const handleClick = (row, col) => {
   // Put the grid coord back together:
@@ -33,8 +58,8 @@ const handleClick = (row, col) => {
 
     // Enable clicking:
     setTimeout(() => {
-      // If the person shuffled then hasMoved = true, thus check for win:
-      if (hasMoved) checkWin();
+      // If the person shuffled then gameStarted = true, thus check for win:
+      if (gameStarted) checkWin();
       // Set borders on new clickable buttons to "red":
       check();
       disableClicks = document.getElementsByTagName('body')[0];
@@ -43,7 +68,7 @@ const handleClick = (row, col) => {
   }
 };
 
-let clickCount = 0;
+
 // Helper function to swap the tiles:
 const swapPhotos = (id) => {
   clickCount++;
@@ -70,9 +95,7 @@ const swapPhotos = (id) => {
   return;
 };
 
-// Function to shuffle the tiles:
-let gameTime = 0;
-let actualGameClock = null;
+// Function to shuffle the tiles & start the game clock and music:
 const shuffle = () => {
   let arr = [];
   for (i = 0; i < 4; i++) {
@@ -81,7 +104,7 @@ const shuffle = () => {
       arr = [...arr, temp.getElementsByTagName('div')[j]];
     }
     // Indicate the a shuffle has taken place so we can begin checking for wins:
-    hasMoved = true;
+    gameStarted = true;
   }
 
   for (i = 0; i < arr.length; i++) {
@@ -191,6 +214,7 @@ const check = () => {
   }
 };
 
+// Function to check if the tiles on board == winning arrangement
 const checkWin = () => {
   for (i = 0; i < 4; i++) {
     const temp = document.getElementById('row' + [i]);
@@ -231,7 +255,8 @@ const cheat = () => {
     const temp = document.getElementById('row' + [i]);
     for (j = 0; j < 4; j++) {
       const curr = temp.getElementsByTagName('div')[j];
-      curr.style.backgroundImage = 'url("./images/' + i + '' + j + '.jpg")';
+      curr.style.backgroundImage = 'url("./'+
+      imageSelection+'/' + i + '' + j + '.jpg")';
       curr.setAttribute('id', i + '' + j);
       curr.innerHTML = '<h1>' + count++ + '</h1>';
       curr.setAttribute('onClick', 'handleClick(' + i + ',' + j + ')');
@@ -248,6 +273,7 @@ const errorHandler = (arg) => {
     handleClick();
     shuffle();
     cheat();
+    setBackground(0);
   }
 };
 errorHandler(1);
