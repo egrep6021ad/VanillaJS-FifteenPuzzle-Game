@@ -10,20 +10,23 @@
 - ~~Create the functionality of the game board~~
     - https://youtu.be/iDBP8BOKCDU
 
-- 1.)~~End-of-game notification:~~
+    1. ) ~~End-of-game notification:~~
     - ~~Provide some sort of visual notification when the game has been won; that is, when the tiles have been rearranged into their original order. An alert is not sufficient; you should modify the appearance of the page. You may display an image(s) if you like, but there is no way to turn them in, so put them on your web space and use full path URLs when linking to them~~
     - End of video: https://youtu.be/iDBP8BOKCDU (July 16)
 
-- 2.)~~Create extra animation:~~
+     2. ) ~~Create extra animation:~~
     - ~~Create some extra animation congratulating the user or add any other optional behavior to handle this event when the puzzle has been won~~
      - End of video: https://youtu.be/iDBP8BOKCDU (July 16)
 
-- 3.)~~Create animations:~~
+     3. ) ~~Create animations:~~
     - ~~Instead of each tile immediately appearing in its new position, make them animate. You can do any sort of animation or other styling you like, as long as the game ends up in the proper state after a reasonable amount of time~~
     - End of video: https://youtu.be/iDBP8BOKCDU (July 16)
 
-- 4.)~~Game time with some music file:~~
+    4. ) ~~Game time with some music file:~~
     - ~~Keep track of the game time elapsed in seconds and the total number of moves, and when the puzzle has been solved, display them along with the best time/moves seen so far. The Music files should be a sound to create some adrenalin~~ (July 17)
+
+    5. ) ~~Multiple backgrounds:~~
+    - ~~Provide several background images (at least 4) to choose from. The game should choose a random background on startup, and should have a UI (such as a select box) by which the player can choose a different image while playing. Host your additional backgrounds on the web server and link to them using full path URLs~~ (July 18)
 
 - ~~Create UML diagram of how code components work together and add slide containing it~~
     <img src="./images/UML_diagram.png">
