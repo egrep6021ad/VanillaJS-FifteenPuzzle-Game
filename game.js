@@ -241,8 +241,8 @@ const checkWin = () => {
     gameTime +
     ' seconds! (Average: ' +
     gameTime / clickCount +
-    ' seconds per move)</h4><br><img src=\'./images/game_board.jpg\'>'+
-    '<br><h4>Best Average: ' +
+    ' second(s) per move)</h4><br><img src=\'./'+imageSelection+
+    '/game_board.jpg\'/><br><h4>Best Average: ' +
     localStorage.getItem('high_score') +
     ' second(s) per move<div>';
   console.log(localStorage.getItem('high_score'));
@@ -266,6 +266,7 @@ const cheat = () => {
 
   check();
 };
+
 
 // Gets rid of esLint non-used variable error
 const errorHandler = (arg) => {
