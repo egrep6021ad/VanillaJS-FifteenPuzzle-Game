@@ -23,6 +23,18 @@ window.onload = () => {
       document.getElementById('row' + i).appendChild(elem);
     }
   }
+  // Add event listeners to all of the static buttons:
+  const buttons = document.getElementsByTagName('button');
+  for (let i = 0; i < buttons.length; i++) {
+    if (i == 0 ) buttons[i].addEventListener('click', shuffle);
+    else if (i == 1) buttons[i].addEventListener('click', cheat);
+    else {
+      buttons[i].addEventListener(
+          'click', function() {
+            setBackground(buttons[i].getAttribute('id'));
+          });
+    };
+  }
   // Set borders on clickable buttons to "red":
   check();
 };
@@ -72,7 +84,7 @@ const handleClick = (row, col) => {
 const swapPhotos = (id) => {
   clickCount++;
   document.getElementById('game_clicks').innerHTML =
-    '<h4>Total Moves: ' + clickCount + '</h4>';
+    'Total Moves: ' + clickCount;
   // Save elem's attibutes
   const elem = document.getElementById(id);
   const tempID = elem.id;
@@ -125,14 +137,14 @@ const shuffle = () => {
     arr[j].innerHTML = currInnerText;
   }
 
-  const audio = document.getElementById('song');
-  audio.loop = true;
-  audio.play();
+  const backgroundMusic = new Audio('song.m4a');
+  backgroundMusic.loop = true;
+  backgroundMusic.play();
 
   actualGameClock = setInterval(() => {
     gameTime++;
     document.getElementById('game_clock').innerHTML =
-      '<h4>Total Gametime: ' + gameTime + ' seconds</h4>';
+      'Total Gametime: ' + gameTime + ' seconds';
   }, 1000);
   // Set borders on clickable buttons to "red":
   check();

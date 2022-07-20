@@ -37,6 +37,6 @@
   - https://docs.google.com/presentation/d/1GsaBDeiai3N08x9iM8HjnDBffVwIXU86SdkM7hMzLP8/edit?usp=sharing (July 17)
 
 
-- Run / Put W3 validation label and link to esLint config file on page
+- ~~Run / Put W3 validation label~~ (July 20) 
 
 - Create YouTube presentation for the project (using the powerpoint)

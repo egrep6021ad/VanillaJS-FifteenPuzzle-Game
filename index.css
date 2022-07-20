@@ -67,6 +67,15 @@ div#row0, div#row1,div#row2,div#row3 {
 button{
     margin: 2% 0 0 0;
 }
+p{
+    width: 60%;
+    height: auto;
+    display: flex;
+    justify-content: flex-end;
+}
+p > a > img {
+    animation: none;
+}
 .disable_clicks{
      pointer-events: none;
      opacity: 0.8;
@@ -92,4 +101,9 @@ img{
 }
 h6{
     margin: 2% 0 0 0;
+}
+.css_validation, .xhtml_validation{
+    border:0;
+    width:88px;
+    height:31px
 }
