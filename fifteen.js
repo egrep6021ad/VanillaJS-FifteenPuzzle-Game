@@ -1,19 +1,18 @@
+'use strict';
 // Script's global vars:
+const AVAILABLE_BACKGROUND = ['gorilla', 'dinosaur', 'horse', 'alligator'];
+// Randomize initial background with 1 of 4 options:
+let imageSelection = AVAILABLE_BACKGROUND[Math.floor(Math.random() * 4)];
 let gameStarted = false;
 let clickCount = 0;
 let gameTime = 0;
 let actualGameClock = null;
 
-// Randomize initial background with 1 of 4 options:
-const availableBackground = ['gorilla', 'dinosaur', 'horse', 'alligator'];
-const background = Math.floor(Math.random() * 4);
-let imageSelection = availableBackground[background];
-
 // Initialize the original table:
 window.onload = () => {
   let count = 0;
-  for (i = 0; i < 4; i++) {
-    for (j = 0; j < 4; j++) {
+  for (let i = 0; i < 4; i++) {
+    for (let j = 0; j < 4; j++) {
       const elem = document.createElement('div');
       elem.style.backgroundImage = 'url("./'+
       imageSelection+'/' + i + '' + j + '.jpg")';
@@ -32,7 +31,7 @@ window.onload = () => {
 const setBackground = (arg) => {
   imageSelection = arg;
   const arr = document.getElementsByTagName('div');
-  for ( i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     const tempId = arr[i].getAttribute('id');
     if (tempId.charAt(0)!= 'r') {
       arr[i].style.backgroundImage = 'url("./'+
@@ -98,22 +97,22 @@ const swapPhotos = (id) => {
 // Function to shuffle the tiles & start the game clock and music:
 const shuffle = () => {
   let arr = [];
-  for (i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     const temp = document.getElementById('row' + [i]);
-    for (j = 0; j < 4; j++) {
+    for (let j = 0; j < 4; j++) {
       arr = [...arr, temp.getElementsByTagName('div')[j]];
     }
     // Indicate the a shuffle has taken place so we can begin checking for wins:
     gameStarted = true;
   }
 
-  for (i = 0; i < arr.length; i++) {
+  for (let i = 0; i < arr.length; i++) {
     // For each element in arr
-    j = Math.floor(Math.random() * arr.length); // New random index
-    currSrc = arr[i].style.backgroundImage;
-    currID = arr[i].getAttribute('id');
-    currClicker = arr[i].getAttribute('onClick');
-    currInnerText = arr[i].innerHTML;
+    const j = Math.floor(Math.random() * arr.length); // New random index
+    const currSrc = arr[i].style.backgroundImage;
+    const currID = arr[i].getAttribute('id');
+    const currClicker = arr[i].getAttribute('onClick');
+    const currInnerText = arr[i].innerHTML;
 
     arr[i].style.backgroundImage = arr[j].style.backgroundImage;
     arr[i].setAttribute('id', arr[j].getAttribute('id'));
@@ -143,24 +142,24 @@ const shuffle = () => {
 const check = () => {
   let arr = [];
   try {
-    for (i = 0; i < 4; i++) {
+    for (let i = 0; i < 4; i++) {
       const temp = document.getElementById('row' + [i]);
 
       let tempList = [];
-      for (j = 0; j < 4; j++) {
+      for (let j = 0; j < 4; j++) {
         tempList = [...tempList, temp.getElementsByTagName('div')[j]];
       }
       arr = [...arr, tempList];
     }
     // Reset all the old images back to default
-    for (i = 0; i < 4; i++) {
-      for (j = 0; j < 4; j++) {
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
         arr[i][j].setAttribute('class', 'non_click_image');
       }
     }
     // Set the border on clickable images:
-    for (i = 0; i < 4; i++) {
-      for (j = 0; j < 4; j++) {
+    for (let i = 0; i < 4; i++) {
+      for (let j = 0; j < 4; j++) {
         if (i == 0) {
           if (j == 0) {
             if (arr[i][j].id == '33') {
@@ -216,9 +215,9 @@ const check = () => {
 
 // Function to check if the tiles on board == winning arrangement
 const checkWin = () => {
-  for (i = 0; i < 4; i++) {
+  for (let i = 0; i < 4; i++) {
     const temp = document.getElementById('row' + [i]);
-    for (j = 0; j < 4; j++) {
+    for (let j = 0; j < 4; j++) {
       const curr = temp.getElementsByTagName('div')[j];
       if (curr.id != i + '' + j) return;
     }
@@ -250,10 +249,10 @@ const checkWin = () => {
 
 
 const cheat = () => {
-  count = 0;
-  for (i = 0; i < 4; i++) {
+  let count = 0;
+  for (let i = 0; i < 4; i++) {
     const temp = document.getElementById('row' + [i]);
-    for (j = 0; j < 4; j++) {
+    for (let j = 0; j < 4; j++) {
       const curr = temp.getElementsByTagName('div')[j];
       curr.style.backgroundImage = 'url("./'+
       imageSelection+'/' + i + '' + j + '.jpg")';
