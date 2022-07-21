@@ -27,7 +27,7 @@ window.onload = () => {
   const buttons = document.getElementsByTagName('button');
   for (let i = 0; i < buttons.length; i++) {
     if (i == 0 ) buttons[i].addEventListener('click', shuffle);
-    else if (i == 1) buttons[i].addEventListener('click', cheat);
+    // else if (i == 1) buttons[i].addEventListener('click', cheat);
     else {
       buttons[i].addEventListener(
           'click', function() {
@@ -252,7 +252,7 @@ const checkWin = () => {
     gameTime +
     ' seconds! (Average: ' +
     gameTime / clickCount +
-    ' second(s) per move)</h4><br><img src=\'./'+imageSelection+
+    ' second(s) per move)</h4><br><img id="winner" src=\'./'+imageSelection+
     '/game_board.jpg\'/><br><h4>Best Average: ' +
     localStorage.getItem('high_score') +
     ' second(s) per move<div>';

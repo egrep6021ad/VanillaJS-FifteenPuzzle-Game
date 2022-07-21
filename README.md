@@ -39,4 +39,6 @@
 
 - ~~Run / Put W3 validation label~~ (July 20) 
 
-- Create YouTube presentation for the project (using the powerpoint)
+- ~~Create YouTube presentation for the project (using the powerpoint)~~
+https://youtu.be/fPASVVXu9y4
+(July 20)

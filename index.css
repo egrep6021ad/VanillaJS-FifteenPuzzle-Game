@@ -63,6 +63,8 @@ div#row0, div#row1,div#row2,div#row3 {
 .clickable_image:hover{
   border: 2px solid red;
   cursor: pointer;
+  color: #006600;
+  text-decoration: underline;
 }
 button{
     margin: 2% 0 0 0;
@@ -73,9 +75,7 @@ p{
     display: flex;
     justify-content: flex-end;
 }
-p > a > img {
-    animation: none;
-}
+
 .disable_clicks{
      pointer-events: none;
      opacity: 0.8;
@@ -92,7 +92,7 @@ p > a > img {
     font-family: sans-serif;
     text-decoration: underline;
 }
-img{
+img#winner{
     height: 40%;
     width: 40%;
     animation: winner_image 3s forwards;
@@ -102,7 +102,8 @@ img{
 h6{
     margin: 2% 0 0 0;
 }
-.css_validation, .xhtml_validation{
+.xhtml_validation, .css_validation{
+    animation: none;
     border:0;
     width:88px;
     height:31px
